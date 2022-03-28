@@ -1,5 +1,5 @@
 :root {
-  --backgrond: #000;
+  --background: #000;
   --text-color: #FFF;
   --button: #8257E5;
   --border: #29292E;
@@ -12,96 +12,94 @@
   padding: 0;
   box-sizing: border-box;
   overflow-y: hidden;
+  overflow-x: hidden;
+  background:var(--background);
 }
 body{
-  min-height: 100vh;
-  background: var(--backgrond);
-  padding: 0rem 10rem;
+  position: relative;
+}
+body::before{
+  content: url("./img/blur-1.png");
+  position: absolute;
+  bottom:0px;
+}
+body::after{
+  content: url("./img/blur-2.png");
+  position: absolute;
+  top: -20px;
+  right: 0;
 }
 .header{
+  width: 100%;
   height: 15vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 2rem;
-  padding-top: 2rem;
-  position: relative;
-  margin-bottom: 2rem;
+  padding: 1rem 4rem;
+  margin-bottom: .5rem;
+z-index: 10000;
 }
 .menu-item{
   display: flex;
-  gap: 4rem;
+  gap: 2rem;
 }
 .menu-item li{
   list-style: none;
 }
 .menu-item a{
-  font-size:0,875;
+  font-size:1.2rem;
   line-height: 1.25;
   letter-spacing: 1px;
-  color: var(--text-color);
   text-decoration: none;
-  padding: 1rem .0rem;
-  position: relative;
-  
+  color: var(--text-color);
+  transition: .3s;
 }
-.menu-item a::after{
-  content: "";
-  display: block;
-  height: 2px;
-  width: 0px;
-  margin-top: 4px;
-  background: var(--text-color);
-  transition: 0.4s;
-  position: absolute;
-}
-.menu-item a:hover::after{
-  width: 100%;
+.menu-item a:hover{
+  color: var(--button);
 }
 .botao button{
   background: none;
-  padding: .7rem 2.4rem;
-  border: 2px solid var(--button);
-  border-radius: 6px;
   text-transform: uppercase;
   font-size: 0.6875rem;
   line-height: .875rem;
   color: var(--text-color);
+  padding: .7rem 2.4rem;
+  border: 2px solid var(--button);
+  border-radius: 6px;
   cursor: pointer;
   transition: .5s;
 }
 .botao button:hover{
  background: var(--button);
-
 }
-.container{
+.conteudo{
+  width: 100%;
   height: 85vh;
   display: flex;
   flex-direction: column;
+}
+.texto{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: .4rem;
+  font-size: 3rem;
 }
-.container .texto{
-  height: 25%;
-  font-size: 4rem;
-}
-@media (max-height:1200px){
-  .container .texto{
-    height: 30%;
-    font-size: 4rem;
-  }
-  .container .imagem {
-    height: 70%;
-  }
-}
-.container .texto h1:nth-child(1){
+.texto h1:nth-child(1){
   color: var(--text-color);
 }
-.container .texto h1:nth-child(2){
+.texto h1:nth-child(2){
+  background: none;
   text-shadow: -1px -1px 0 var(--button), 1px -1px 0 var(--button), -1px 1px 0 var(--button), 1px 1px 0 var(--button);
 }
-.container .imagem {
-  height: 75%;
+.imagem{
+  width: 100%;
+  height:85%;
+  display: flex;
+  justify-content: center;
 }
-.container .imagem img{
-  height: 100%;
+.imagem img{
+  object-fit: cover;
 }
